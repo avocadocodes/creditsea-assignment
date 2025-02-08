@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UploadForm from "./components/UploadForm";
 import ReportList from "./components/ReportList";
-import "./index.css"; // Ensure global CSS is imported
+import "./index.css"; 
 
 const App = () => {
   const [reports, setReports] = useState([]);
@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>Credit Report Dashboard</h1>
+      <h1>💳 Credit Report Dashboard</h1>
       <UploadForm fetchReports={fetchReports} />
       <ReportList reports={reports} />
     </div>

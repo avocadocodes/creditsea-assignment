@@ -25,7 +25,7 @@ const UploadForm = ({ fetchReports }) => {
 
   return (
     <div className="upload-container">
-      <h2>Upload XML File</h2>
+      <h2>📂 Upload XML File</h2>
       <input type="file" onChange={(e) => setFile(e.target.files[0])} />
       <button onClick={handleUpload} disabled={loading}>
         {loading ? "Uploading..." : "Upload"}

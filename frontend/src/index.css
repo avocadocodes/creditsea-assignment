@@ -1,45 +1,65 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
+
+body {
+  background-color: #f4f7fc;
+  color: #333;
+}
+
 
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 40px auto;
-  background: white;
   padding: 20px;
+  background: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
+
 h1 {
-  text-align: center;
-  color: #333;
+  font-size: 28px;
+  color: #1e3a8a;
+  margin-bottom: 20px;
 }
 
 .upload-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  background: #eaf1ff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px dashed #007bff;
+  transition: all 0.3s ease-in-out;
+}
+
+.upload-container:hover {
+  background: #d4e2ff;
 }
 
 .upload-container input {
-  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 5px;
 }
 
 .upload-container button {
   background-color: #007bff;
   color: white;
-  padding: 10px 15px;
+  padding: 12px 18px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
 }
 
 .upload-container button:hover {
@@ -51,19 +71,36 @@ h1 {
 }
 
 .report-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 5px;
   background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.report-card:hover {
+  transform: scale(1.02);
 }
 
 .report-card h3 {
-  margin: 0;
+  font-size: 20px;
   color: #007bff;
 }
 
 .report-card p {
-  margin: 5px 0;
+  font-size: 14px;
   color: #555;
+}
+
+.credit-accounts {
+  margin-top: 10px;
+  padding: 10px;
+  background: #eef4ff;
+  border-radius: 5px;
+}
+
+.credit-accounts li {
+  font-size: 14px;
+  margin-bottom: 5px;
 }

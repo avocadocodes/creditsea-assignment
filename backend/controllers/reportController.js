@@ -2,11 +2,9 @@ const multer = require("multer");
 const xml2js = require("xml2js");
 const Report = require("../models/Report");
 
-// Multer storage setup
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Function to parse XML
 const parseXML = async (xmlString) => {
   return new Promise((resolve, reject) => {
     xml2js.parseString(xmlString, { explicitArray: false }, (err, result) => {
@@ -16,13 +14,13 @@ const parseXML = async (xmlString) => {
   });
 };
 
-// Upload File and Process Data
+
 const uploadFile = async (req, res) => {
   try {
     const xmlString = req.file.buffer.toString("utf-8");
     const parsedData = await parseXML(xmlString);
 
-    console.log("Parsed XML Data:", JSON.stringify(parsedData, null, 2)); // Debugging line
+    console.log("Parsed XML Data:", JSON.stringify(parsedData, null, 2)); 
 
     const applicantDetails = parsedData?.INProfileResponse?.Current_Application?.Current_Application_Details?.Current_Applicant_Details;
     const summary = parsedData?.INProfileResponse?.CAIS_Account?.CAIS_Summary?.Credit_Account;
@@ -32,8 +30,6 @@ const uploadFile = async (req, res) => {
     if (!applicantDetails) {
       return res.status(400).json({ error: "Invalid XML structure: Missing Applicant Details" });
     }
-
-    // Extracting credit accounts data
     const creditAccounts = Array.isArray(accounts)
       ? accounts.map(acc => ({
           bankName: acc?.Subscriber_Name?.trim() || "Unknown",
@@ -43,7 +39,7 @@ const uploadFile = async (req, res) => {
         }))
       : [];
 
-    // Creating a new report
+   
     const report = new Report({
       name: `${applicantDetails.First_Name || "Unknown"} ${applicantDetails.Last_Name || ""}`,
       mobile: applicantDetails.MobilePhoneNumber || "N/A",
@@ -68,7 +64,6 @@ const uploadFile = async (req, res) => {
   }
 };
 
-// Fetch Reports
 const getReports = async (req, res) => {
   try {
     const reports = await Report.find();
